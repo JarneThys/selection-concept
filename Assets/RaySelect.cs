@@ -18,7 +18,7 @@ public class RaySelect : MonoBehaviour
     private bool btnPressed = true;
     private int prevSelect = -1;
     private TextWriter tw;
-    private int samples = -1, maxSamples = 10;
+    private int samples = -1, maxSamples = 55;
 
     // Start is called before the first frame update
     void Start()
@@ -69,7 +69,7 @@ public class RaySelect : MonoBehaviour
                 foreach (var target in targets)
                     target.GetComponent<MeshRenderer>().material = sphereMat;
                 int select = Random.Range(0, targets.Count);
-                while (select == prevSelect)
+                while (select == prevSelect && targets.Count > 1)
                     select = Random.Range(0, targets.Count);
                 targets[select].GetComponent<MeshRenderer>().material = targetMat;
                 prevSelect = select;
